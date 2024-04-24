@@ -1,0 +1,37 @@
+[
+    {
+        "ID": "001",
+        "Nombre de Usuario": "GamerX",
+        "Videojuegos Favoritos": ["The Witcher 3", "Civilization VI", "Stardew Valley"],
+        "Géneros Preferidos": ["RPG", "Estrategia", "Simulación"],
+        "Plataformas de Juego": ["PC", "Nintendo Switch"]
+    },
+    {
+        "ID": "002",
+        "Nombre de Usuario": "PlayerOne",
+        "Videojuegos Favoritos": ["FIFA 22", "NBA 2K22"],
+        "Géneros Preferidos": ["Deportes", "Acción"],
+        "Plataformas de Juego": ["PS5", "Xbox One"]
+    },
+    {
+        "ID": "003",
+        "Nombre de Usuario": "StrategyFan",
+        "Videojuegos Favoritos": ["Age of Empires II", "Total War: Rome II"],
+        "Géneros Preferidos": ["Estrategia", "Simulación"],
+        "Plataformas de Juego": ["PC"]
+    },
+    {
+        "ID": "004",
+        "Nombre de Usuario": "RetroGamer",
+        "Videojuegos Favoritos": ["Super Mario Bros", "Pac-Man"],
+        "Géneros Preferidos": ["Arcade", "Plataforma"],
+        "Plataformas de Juego": ["NES", "Arcade"]
+    },
+    {
+        "ID": "005",
+        "Nombre de Usuario": "AdventureSeeker",
+        "Videojuegos Favoritos": ["Uncharted 4", "Tomb Raider"],
+        "Géneros Preferidos": ["Aventura", "Acción"],
+        "Plataformas de Juego": ["PS4", "PC"]
+    }
+]
