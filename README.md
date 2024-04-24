@@ -6,7 +6,7 @@
 #### Profesor: 
 #### Integrantes:
 - Sihuar Ccotarma Ttito U20211c736
-- 
+- Fernando Daniel Quispe Condori U20221C628
 - 
 
 ## Titulo del Proyecto:
