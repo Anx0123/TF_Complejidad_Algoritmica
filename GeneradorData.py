@@ -33,6 +33,9 @@ def generarUsuarios(n):
     #Retorna una lista de diccionarios que será agregado al data set de json.
     return [generarUsuario(i) for i in range(1, n + 1)]
 
+
+#TODO: Realizar agregación de datos por cada uno.
+
 # Generación y adición de sus datos para Fernando Daniel Quispe Condori
 usuarios = generarUsuarios(500)
 
