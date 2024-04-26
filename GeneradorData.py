@@ -15,6 +15,12 @@ videojuegos_raros = ["Juego Indie 1", "Juego Retro 1"]
 generos_raros = ["Visual Novel", "Text Adventure"]
 plataformas_raras = ["Linux", "Mac"]
 
+# Funcion para agregar intereses raros a cada usuario
+def agregarInteresesRaros(intereses, raros):
+    if not set(intereses).intersection(set(raros)):
+        intereses.append(rd.choice(raros))
+    return intereses
+
 #Funcion generar usuario según un ID
 def generarUsuario(id):
     #Genera un usuario con nombre "User + Parámetro(Id)" y con datos aleatorios de la lista predefinida.
@@ -24,6 +30,11 @@ def generarUsuario(id):
     generos_preferidos = rd.sample(generos, rd.randint(1, 5))
     plataformas_juego = rd.sample(plataformas, rd.randint(1, 5))
     
+    # Asegurar que cada usuario tenga al menos un interés raro
+    videojuegos_favoritos = agregarInteresesRaros(videojuegos_favoritos, videojuegos_raros)
+    generos_preferidos = agregarInteresesRaros(generos_preferidos, generos_raros)
+    plataformas_juego = agregarInteresesRaros(plataformas_juego, plataformas_raras)
+
     #Se retorna un diccionario de python con los datos.
     return {
         "id": str(id).zfill(3),
