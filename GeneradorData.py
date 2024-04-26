@@ -21,6 +21,25 @@ def agregarInteresesRaros(intereses, raros):
         intereses.append(rd.choice(raros))
     return intereses
 
+#Eventos externos que pueden influir en los intereses de los usuarios
+eventos = ["Lanzamiento de nuevo juego", "Popularidad de un género", "Ofertas en una plataforma"]
+
+# Funcion para aplicar un evento externo aleatorio a los intereses de los usuarios
+def aplicarEventoAleatorio(usuario):
+    evento = rd.choice(eventos)
+    if evento == "Lanzamiento de nuevo juego":
+        nuevo_juego = "Nuevo Juego AAA"
+        if nuevo_juego not in usuario["videojuegosFavoritos"]:
+            usuario["videojuegosFavoritos"].append(nuevo_juego)
+    elif evento == "Popularidad de un género":
+        nuevo_genero = "Battle Royale"
+        if nuevo_genero not in usuario["generosPreferidos"]:
+            usuario["generosPreferidos"].append(nuevo_genero)
+    elif evento == "Ofertas en una plataforma":
+        nueva_plataforma = "Steam"
+        if nueva_plataforma not in usuario["plataformasJuego"]:
+            usuario["plataformasJuego"].append(nueva_plataforma)
+
 #Funcion generar usuario según un ID
 def generarUsuario(id):
     #Genera un usuario con nombre "User + Parámetro(Id)" y con datos aleatorios de la lista predefinida.
