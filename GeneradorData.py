@@ -10,6 +10,11 @@ videojuegos = ["The Witcher 3", "Civilization VI", "Stardew Valley", "FIFA 22", 
 generos = ["RPG", "Estrategia", "Simulación", "Deportes", "Acción", "Arcade", "Plataforma", "Aventura"]
 plataformas = ["PC", "Nintendo Switch", "PS5", "Xbox One", "NES", "Arcade", "PS4"]
 
+#Lista de videojuegos, plataformas y generos "raros" así evitamos intereses comunes muy fácilmente relacionados en el grafo.
+videojuegos_raros = ["Juego Indie 1", "Juego Retro 1"]
+generos_raros = ["Visual Novel", "Text Adventure"]
+plataformas_raras = ["Linux", "Mac"]
+
 #Funcion generar usuario según un ID
 def generarUsuario(id):
     #Genera un usuario con nombre "User + Parámetro(Id)" y con datos aleatorios de la lista predefinida.
