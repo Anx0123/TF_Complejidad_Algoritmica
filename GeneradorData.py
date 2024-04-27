@@ -45,9 +45,9 @@ def generarUsuario(id):
     #Genera un usuario con nombre "User + Parámetro(Id)" y con datos aleatorios de la lista predefinida.
     nombre_usuario = "User" + str(id)
     #Asigna a cada dato, una lista de videojuegos, generos y/o plataformas. 
-    videojuegos_favoritos = rd.sample(videojuegos, rd.randint(1, 5))
-    generos_preferidos = rd.sample(generos, rd.randint(1, 5))
-    plataformas_juego = rd.sample(plataformas, rd.randint(1, 5))
+    videojuegos_favoritos = rd.sample(videojuegos, rd.randint(1, 3))
+    generos_preferidos = rd.sample(generos, rd.randint(1, 3))
+    plataformas_juego = rd.sample(plataformas, rd.randint(1, 3))
     
     # Asegurar que cada usuario tenga al menos un interés raro
     videojuegos_favoritos = agregarInteresesRaros(videojuegos_favoritos, videojuegos_raros)
