@@ -7,6 +7,7 @@ WX72
 #### Profesor: 
 Carnaval Sanchez, Luis Martin
 #### Integrantes:
+
 - Ccotarma Ttito, Sihuar Eduardo U20211c736
 - Iparraguirre Rueda, Cristian Luis U202113111
 - Quispe Condori, Fernando Daniel U20221C628
