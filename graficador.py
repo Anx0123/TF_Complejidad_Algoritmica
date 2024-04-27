@@ -12,7 +12,7 @@ class NetworkAnalysis:
         self.G.add_edges_from(edges)
     
     def visualize_graph(self):
-        nx.draw(self.G, with_labels=True, node_size=500, node_color='skyblue', font_size=8) # Editar nodos
+        nx.draw(self.G, with_labels=True, node_size=500, node_color='skyblue', font_size=8) # Editar nodo
         plt.show()
     
     def get_nodes(self):
