@@ -17,12 +17,19 @@ Carnaval Sanchez, Luis Martin
 Netminig
 
 ## Índice
-- [Caratula](#tf_complejidad_algoritmica)
-- [Descripción del Problema](#descripción-del-problema)
-- [Propuesta de solucion](#propuesta-de-solucion)
-- [Estructura de datos (dataset)](#estructura-de-los-datos)
-- [Diseño del Aplicativo](#diseño-del-aplicativo)
-- [Validacion de resultados](#validacion-de-resultados-y-pruevas)
+- [TF\_Complejidad\_Algoritmica](#tf_complejidad_algoritmica)
+      - [Sección:](#sección)
+      - [Profesor:](#profesor)
+      - [Integrantes:](#integrantes)
+  - [Titulo del Proyecto:](#titulo-del-proyecto)
+  - [Índice](#índice)
+  - [Descripción del Problema](#descripción-del-problema)
+  - [Propuesta de Solucion](#propuesta-de-solucion)
+    - [Estructura de los Datos](#estructura-de-los-datos)
+  - [Diseño del aplicativo](#diseño-del-aplicativo)
+  - [Validacion de resultados y pruevas](#validacion-de-resultados-y-pruevas)
+    - [Ejemplo esperado](#ejemplo-esperado)
+  - [Conclucion](#conclucion)
 
 ## Descripción del Problema
 Hoy en día, se lanzan al mercado una gran variedad de videojuegos con estilos, géneros y mecánicas diversos. Esta amplia gama de preferencias está generando una división cada vez mayor entre las comunidades de jugadores. Cada jugador tiene sus propios gustos y preferencias en cuanto a los tipos de juegos que prefiere. Mientras algunos disfrutan de juegos de rol (RPG), otros prefieren los juegos de disparos (FPS), y hay quienes se inclinan por los juegos de estrategia o de aventuras. Esta diversidad puede dificultar que una persona encuentre compañeros para jugar un juego específico cuando lo desea.
