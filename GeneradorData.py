@@ -3,6 +3,7 @@
 import random as rd
 #Librería json para leer y escribir el formato json en nuestro dataset.
 import json
+import os
 
 #Opciones de selección aleatoria para datos de Videojuegos, Generos y Plataformas.
 #TODO: Agregar más datos para obtener más datos aleatorios y variados.
@@ -63,16 +64,33 @@ def generarUsuario(id):
         "plataformasJuego": plataformas_juego
     }
 
-#Funcion para generar N usuarios, cada participante deberá usar esta función para generar nuestros 500 datos.
-def generarUsuarios(n):
-    #Retorna una lista de diccionarios que será agregado al data set de json.
-    return [generarUsuario(i) for i in range(1, n + 1)]
+# Funcion para generar N usuarios
+def generarUsuarios(n, start_id):
+    return [generarUsuario(i) for i in range(start_id, start_id + n)]
 
+# Leer datos existentes y agregar nuevos usuarios
+def agregarUsuariosAlJson(n):
+    filename = 'dataset.json'
+    usuarios_existentes = []
+    start_id = 1
+    
+    # Verificar si el archivo ya existe para leer los datos existentes
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            usuarios_existentes = json.load(file)
+            # Determinar el nuevo ID de inicio basado en la cantidad existente de usuarios
+            if usuarios_existentes:
+                start_id = int(usuarios_existentes[-1]["id"]) + 1
+    
+    # Generar nuevos usuarios
+    nuevos_usuarios = generarUsuarios(n, start_id)
+    
+    # Combinar listas de usuarios existentes y nuevos
+    usuarios_actualizados = usuarios_existentes + nuevos_usuarios
+    
+    # Escribir la lista actualizada de usuarios en el archivo
+    with open(filename, 'w') as file:
+        json.dump(usuarios_actualizados, file, indent=4)
 
-#TODO: Realizar agregación de datos por cada uno.
-
-# Generación y adición de sus datos para Fernando Daniel Quispe Condori
-usuarios = generarUsuarios(500)
-
-with open('dataset.json', 'w') as f:
-    json.dump(usuarios, f, indent=4)
+# Ejemplo de uso: agregar 2 nuevos usuarios al JSON
+agregarUsuariosAlJson(2)
