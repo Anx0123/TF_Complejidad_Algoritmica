@@ -7,8 +7,14 @@ import os
 
 #Opciones de selección aleatoria para datos de Videojuegos, Generos y Plataformas.
 #TODO: Agregar más datos para obtener más datos aleatorios y variados.
-videojuegos = ["The Witcher 3", "Civilization VI", "Stardew Valley", "FIFA 22", "NBA 2K22", "Age of Empires II", "Total War: Rome II", "Super Mario Bros", "Pac-Man", "Uncharted 4", "Tomb Raider"]
-generos = ["RPG", "Estrategia", "Simulación", "Deportes", "Acción", "Arcade", "Plataforma", "Aventura"]
+videojuegos = ["The Witcher 3", "Civilization VI", "Stardew Valley", "FIFA 22", "NBA 2K22", "Age of Empires II", "Total War: Rome II", "Super Mario Bros",
+                "Pac-Man", "Uncharted 4", "Tomb Raider","undertale","league of legends","dota","fallout","batman","proyect Zomboid","half life","counter Strike"
+                ,"Warcraft","Minecraft","Valorant","terraria","The Elder Ring","God of war","Hitman","Wolfstein","Grand The Auto","Watch Dog","Assassin's Cred",
+                "Resident Evil","Hollow knigth","lead for dead 2","Overwatch","Paladins","Call of duty","Metro last ligth","Horizon","Tekken","Streat Fighter",
+                "Dragon Ball","The forest","Hallo" ]
+
+generos = ["RPG", "Estrategia", "Simulación", "Deportes", "Acción", "Arcade", "Plataforma", "Aventura","MultiPlayer","Single Player","MMO","Terror","Suspenso","Peleas",
+           "Roleplay","Carrera","Idie","Deporter"]
 plataformas = ["PC", "Nintendo Switch", "PS5", "Xbox One", "NES", "Arcade", "PS4"]
 
 #Lista de videojuegos, plataformas y generos "raros" así evitamos intereses comunes muy fácilmente relacionados en el grafo.
@@ -46,23 +52,22 @@ def generarUsuario(id):
     #Genera un usuario con nombre "User + Parámetro(Id)" y con datos aleatorios de la lista predefinida.
     nombre_usuario = "User" + str(id)
     #Asigna a cada dato, una lista de videojuegos, generos y/o plataformas. 
-    videojuegos_favoritos = rd.sample(videojuegos, rd.randint(1, 3))
-    generos_preferidos = rd.sample(generos, rd.randint(1, 3))
-    plataformas_juego = rd.sample(plataformas, rd.randint(1, 3))
+    videojuegos_favoritos = rd.sample(videojuegos, rd.randint(1, 9))
+    generos_preferidos = rd.sample(generos, rd.randint(1, 4))
+    plataformas_juego = rd.sample(plataformas, rd.randint(1, 4))
     
-    # Asegurar que cada usuario tenga al menos un interés raro
-    videojuegos_favoritos = agregarInteresesRaros(videojuegos_favoritos, videojuegos_raros)
-    generos_preferidos = agregarInteresesRaros(generos_preferidos, generos_raros)
-    plataformas_juego = agregarInteresesRaros(plataformas_juego, plataformas_raras)
-
-    #Se retorna un diccionario de python con los datos.
-    return {
+    
+    usuario = {
         "id": str(id).zfill(3),
         "nombreUsuario": nombre_usuario,
         "videojuegosFavoritos": videojuegos_favoritos,
         "generosPreferidos": generos_preferidos,
         "plataformasJuego": plataformas_juego
     }
+
+
+
+    return usuario
 
 # Funcion para generar N usuarios
 def generarUsuarios(n, start_id):
@@ -93,4 +98,4 @@ def agregarUsuariosAlJson(n):
         json.dump(usuarios_actualizados, file, indent=4)
 
 # Ejemplo de uso: agregar 2 nuevos usuarios al JSON
-agregarUsuariosAlJson(2)
+agregarUsuariosAlJson(900)
