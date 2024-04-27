@@ -5,6 +5,7 @@ from graficador import NetworkAnalysis
 network = NetworkAnalysis()
 network.add_nodes([1, 2, 3])
 network.add_edges([(1, 2), (1, 3), (2, 3)])
+
 network.visualize_graph()
 
 print("Nodos:", network.get_nodes())

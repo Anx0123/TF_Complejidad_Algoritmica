@@ -60,6 +60,7 @@ class NetworkAnalysis:
             if len(shared_platforms) > 0:
                 self.G.add_edge(user1["ID"], user2["ID"])
 
+<<<<<<< HEAD
 # Ejemplo de uso
 network = NetworkAnalysis()
 network.add_nodes([1, 2, 3])
@@ -77,3 +78,5 @@ print("Camino más corto entre 1 y 3:", shortest_path)
 
 clustering_coefficient = network.clustering_coefficient()
 print("Coeficiente de Clustering:", clustering_coefficient)
+=======
+>>>>>>> main
