@@ -12,7 +12,7 @@ class NetworkAnalysis:
         self.G.add_edges_from(edges)
     
     def visualize_graph(self):
-        # Ajustar grafico
+        # Ajustar Grafico
         pos = nx.spring_layout(self.G, k=500.0)  
         plt.figure(figsize=(50, 50))  # Ajusta el tamaño de la figura
         nx.draw(self.G, pos, with_labels=True, node_size=500, node_color='skyblue', font_size=12)
