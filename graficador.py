@@ -12,7 +12,10 @@ class NetworkAnalysis:
         self.G.add_edges_from(edges)
     
     def visualize_graph(self):
-        nx.draw(self.G, with_labels=True, node_size=500, node_color='skyblue', font_size=8) # Editar nodo
+        # Ajustar Grafico
+        pos = nx.spring_layout(self.G, k=500.0)  
+        plt.figure(figsize=(50, 50))  # Ajusta el tamaño de la figura
+        nx.draw(self.G, pos, with_labels=True, node_size=500, node_color='skyblue', font_size=12)
         plt.show()
     
     def get_nodes(self):
@@ -45,18 +48,26 @@ class NetworkAnalysis:
             for j in range(i + 1, len(users)):
                 user1 = users[i]
                 user2 = users[j]
-                
-                # Criterio 1: Videojuegos favoritos compartidos
-                shared_games = set(user1["videojuegosFavoritos"]) & set(user2["videojuegosFavoritos"])
-                if len(shared_games) > 0:
-                    self.G.add_edge(user1["id"], user2["id"])
-                
-                # Criterio 2: Géneros de juegos comunes
-                shared_genres = set(user1["generosPreferidos"]) & set(user2["generosPreferidos"])
-                if len(shared_genres) >= 2:  # Comparten al menos dos géneros de juegos
-                    self.G.add_edge(user1["id"], user2["id"])
-                
-                # Criterio 3: Plataformas de juego compartidas
-                shared_platforms = set(user1["plataformasJuego"]) & set(user2["plataformasJuego"])
-                if len(shared_platforms) > 0:
-                    self.G.add_edge(user1["id"], user2["id"])
+
+
+            # CRITERIOS DE CONEXIONES 
+            # Criterio 1: Videojuegos favoritos compartidos
+            shared_games = set(user1["videojuegosFavoritos"]) & set(user2["videojuegosFavoritos"])
+            if len(shared_games) >= 3:  # Comparten al menos tres videojuegos favoritos
+                self.G.add_edge(user1["id"], user2["id"])
+
+            # Criterio 2: Géneros de juegos comunes
+            shared_genres = set(user1["generosPreferidos"]) & set(user2["generosPreferidos"])
+            if len(shared_genres) >= 3:  # Comparten al menos tres géneros de juegos preferidos
+                self.G.add_edge(user1["id"], user2["id"])
+
+            # Criterio 3: Plataformas de juego compartidas
+            shared_platforms = set(user1["plataformasJuego"]) & set(user2["plataformasJuego"])
+            if len(shared_platforms) >= 2:  # Comparten al menos dos plataformas de juego favoritas
+                self.G.add_edge(user1["id"], user2["id"])
+            
+            # Criterio extra: Comparten al menos un juego y una misma plataforma
+            shared_games = set(user1["videojuegosFavoritos"]) & set(user2["videojuegosFavoritos"])
+            shared_platforms = set(user1["plataformasJuego"]) & set(user2["plataformasJuego"])
+            if len(shared_games) > 0 and len(shared_platforms) > 0:
+                self.G.add_edge(user1["id"], user2["id"])
