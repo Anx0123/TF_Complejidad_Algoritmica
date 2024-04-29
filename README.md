@@ -71,12 +71,11 @@ En esta entrega por el momento las aristas han sido pre definidas por ciertos pa
 1. *La arista se genera cuando un usuario y otro tienen un juego en común*:
 ![La arista se genera cuando un usuario y otro tienen un juego en común](Pruebas/aristas_con_1_juego_en_comun.jpg)
 
-2. *La arista se genera cuando un usuario y otro tienen dos juego en común*:
-![La arista se genera cuando un usuario y otro tienen dos juego en común](Pruebas/aristasde2juegos=.jpg)
+2. *La arista se genera cuando un usuario y otro tienen dos juegos en común*:
+![La arista se genera cuando un usuario y otro tienen dos juegos en común](Pruebas/aristas_de_2_juegos_=.jpg)
 
-3. 
-
-
+3. *La arista se genera cuando un usuario y otro tienen tres juegos y dos plataforma en común*:
+![La arista se genera cuando un usuario y otro tienen tres juegos y dos plataforma en común](Pruebas/aristas_con_3_juegos_=_y_2_plataformas_=.jpg)
 
 
 ### Ejemplo esperado
