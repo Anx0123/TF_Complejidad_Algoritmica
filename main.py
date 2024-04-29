@@ -1,5 +1,5 @@
 # main.py
-from graficador import NetworkAnalysis
+from TF_Complejidad_Algoritmica.graficador import NetworkAnalysis
 
 import json
 # Leer los datos del JSON
