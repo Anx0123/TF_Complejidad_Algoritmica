@@ -4,19 +4,19 @@ from graficador import NetworkAnalysis
 # Ejemplo de uso
 
 import json
-# Leer los datos del JSON  #!Casi me explota la pc cuando puse todos
+# Leer los datos del JSON
 with open('dataset.json', 'r') as file:
     usuarios = json.load(file)
 
-primeros_tres_usuarios = usuarios[:3]
+#primeros_tres_usuarios = usuarios[:3]
 
 
 network = NetworkAnalysis()
 # Agregar los nodos al grafo utilizando los ID de los tres primeros usuarios
-network.add_nodes([usuario["id"] for usuario in primeros_tres_usuarios])
+#network.add_nodes([usuario["id"] for usuario in primeros_tres_usuarios])
 
 # Construir las aristas del grafo basado en los criterios definidos
-network.build_graph_from_criteria(primeros_tres_usuarios)
+network.build_graph_from_criteria(usuarios)
 network.visualize_graph()
 
 print("Nodos:", network.get_nodes())

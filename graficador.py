@@ -48,15 +48,13 @@ class NetworkAnalysis:
                 
                 # Criterio 1: Videojuegos favoritos compartidos
                 shared_games = set(user1["videojuegosFavoritos"]) & set(user2["videojuegosFavoritos"])
-                if len(shared_games) > 0:
-                    self.G.add_edge(user1["id"], user2["id"])
                 
                 # Criterio 2: Géneros de juegos comunes
                 shared_genres = set(user1["generosPreferidos"]) & set(user2["generosPreferidos"])
-                if len(shared_genres) >= 2:  # Comparten al menos dos géneros de juegos
-                    self.G.add_edge(user1["id"], user2["id"])
                 
                 # Criterio 3: Plataformas de juego compartidas
                 shared_platforms = set(user1["plataformasJuego"]) & set(user2["plataformasJuego"])
-                if len(shared_platforms) > 0:
+
+                # Comparten al menos dos juegos, dos generos y una plataforma
+                if len(shared_games) >= 2 and len(shared_platforms) > 0 and len(shared_genres) >= 2:
                     self.G.add_edge(user1["id"], user2["id"])
