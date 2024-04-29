@@ -80,7 +80,8 @@ En esta entrega por el momento las aristas han sido pre definidas por ciertos pa
 
 ### Ejemplo esperado
 
-Supongamos que tenemos un pequeño grupo de usuarios:
+Supongamos que tenemos un pequeño grupo de usuarios y estos deban encontrar otros usuarios con el cual comparten un juego en común para unirse:
+![15 nodos y aristas con un juego en común](Pruebas/Prueba_con_15_nodos_y_aristas_con_1_juego_en_comun.jpg)
 
 ## Conclucion
 La propuesta de implementar un sistema de recomendaciones de amistad basado en intereses comunes en videojuegos dentro de una red social es una solución prometedora para abordar la dificultad que enfrentan los jugadores al encontrar compañeros para jugar. Al adaptar el algoritmo BFS, se puede explorar de manera eficiente la red social y sugerir nuevas conexiones basadas en afinidades en juegos. Esta solución no solo facilita la búsqueda de amigos con intereses similares, sino que también puede enriquecer la experiencia social de los usuarios al conectarlos con personas con quienes comparten pasiones específicas. Además, la validación de resultados mediante un ejemplo práctico demuestra la viabilidad y eficacia potencial de este enfoque. En resumen, la implementación de este sistema podría mejorar significativamente la interacción y la satisfacción de los usuarios en la red social, fortaleciendo así la comunidad de jugadores en línea.
