@@ -68,7 +68,7 @@ Algoritmo se puede utilizar para explorar la red y encontrar conexiones basadas 
 ## Validacion de resultados y pruevas:
 En esta entrega por el momento las aristas han sido pre definidas por ciertos parametros ya pre establecidos por los integrantes del grupo. Algunos ejemplos y pruebas que se realizaron son:
 
-![La arista se genera cuando un usuario y otro tienen un juego en común](Pruebas/aristas%20con%201%20juego%20=.jpg)
+![La arista se genera cuando un usuario y otro tienen un juego en común](Pruebas/aristas_con_1_juego_en_comun.jpg)
 
 
 ### Ejemplo esperado
