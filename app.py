@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
+import json
 
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
@@ -69,6 +70,29 @@ def logout():
     flash('You have been logged out.', 'success')
     # Redirigir a la página principal
     return redirect(url_for('home'))
+
+@app.route('/user/<user_id>')
+def user_profile(user_id):
+    """
+    Ruta para mostrar el perfil de usuario basado en un ID.
+    Lee los datos de un archivo JSON y muestra la información.
+    """
+    try:
+        # Leer el archivo JSON
+        with open('dataset.json') as f:
+            data = json.load(f)
+        
+        # Buscar el usuario por ID
+        user = next((item for item in data['users'] if item["id"] == user_id), None)
+        
+        if user:
+            return render_template('user_profile.html', user=user)
+        else:
+            flash('User not found.', 'danger')
+            return redirect(url_for('home'))
+    except Exception as e:
+        flash('Error reading user data.', 'danger')
+        return redirect(url_for('home'))
 
 if __name__ == '__main__':
     # Ejecutar la aplicación en modo de depuración

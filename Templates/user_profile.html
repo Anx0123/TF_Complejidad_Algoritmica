@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p>ID: {{ user.id }}</p>
+    <p>Name: {{ user.nombreUsuario }}</p>
+    <p>Favorite Games:</p>
+    <ul>
+        {% for game in user.videojuegosFavoritos %}
+            <li>{{ game }}</li>
+        {% endfor %}
+    </ul>
+    <p>Preferred Genres:</p>
+    <ul>
+        {% for genre in user.generosPreferidos %}
+            <li>{{ genre }}</li>
+        {% endfor %}
+    </ul>
+    <p>Gaming Platforms:</p>
+    <ul>
+        {% for platform in user.plataformasJuego %}
+            <li>{{ platform }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
