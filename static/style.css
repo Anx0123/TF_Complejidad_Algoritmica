@@ -52,6 +52,16 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
+.form-container{
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: wheat;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 button {
     background-color: #007BFF;
     color: white;
