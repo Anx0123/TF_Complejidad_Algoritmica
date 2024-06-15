@@ -12,7 +12,10 @@ class NetworkAnalysis:
         self.G.add_edges_from(edges)
     
     def visualize_graph(self):
-        nx.draw(self.G, with_labels=True)
+        # Ajustar Grafico
+        pos = nx.spring_layout(self.G, k=500.0)  
+        plt.figure(figsize=(50, 50))  # Ajusta el tamaño de la figura
+        nx.draw(self.G, pos, with_labels=True, node_size=500, node_color='skyblue', font_size=12)
         plt.show()
     
     def get_nodes(self):
@@ -38,20 +41,23 @@ class NetworkAnalysis:
     
     def read_from_file(self, filename):
         self.G = nx.read_gexf(filename)
+    
+    
+    def build_graph_from_criteria(self, users):
+        for i in range(len(users)):
+            for j in range(i + 1, len(users)):
+                user1 = users[i]
+                user2 = users[j]
+                
+                # Criterio 1: Videojuegos favoritos compartidos
+                shared_games = set(user1["videojuegosFavoritos"]) & set(user2["videojuegosFavoritos"])
+                
+                # Criterio 2: Géneros de juegos comunes
+                shared_genres = set(user1["generosPreferidos"]) & set(user2["generosPreferidos"])
+                
+                # Criterio 3: Plataformas de juego compartidas
+                shared_platforms = set(user1["plataformasJuego"]) & set(user2["plataformasJuego"])
 
-# Ejemplo de uso
-network = NetworkAnalysis()
-network.add_nodes([1, 2, 3])
-network.add_edges([(1, 2), (1, 3), (2, 3)])
-network.visualize_graph()
-
-print("Nodos:", network.get_nodes())
-print("Aristas:", network.get_edges())
-print("Número de nodos:", network.count_nodes())
-print("Número de aristas:", network.count_edges())
-
-shortest_path = network.shortest_path(1, 3)
-print("Camino más corto entre 1 y 3:", shortest_path)
-
-clustering_coefficient = network.clustering_coefficient()
-print("Coeficiente de Clustering:", clustering_coefficient)
+                # Comparten al menos dos juegos, dos generos y una plataforma
+                if len(shared_games) >= 2 and len(shared_platforms) > 0 and len(shared_genres) >= 2:
+                    self.G.add_edge(user1["id"], user2["id"])
