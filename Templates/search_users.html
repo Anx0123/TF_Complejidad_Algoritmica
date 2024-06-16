@@ -9,13 +9,14 @@
 <body>
     <div class="container">
         <h1>Search Users</h1>
-        <form method="GET">
+        <form method="POST">
             <div class="form-group">
                 <label for="search-username">Search by Username:</label>
                 <input type="text" id="search-username" name="search-username" required>
             </div>
             <button type="submit">Search</button>
         </form>
+        
         <h2>Search Results</h2>
         {% if search_results %}
             <div class="user-list">
@@ -40,6 +41,7 @@
                     <p><strong>Favorite Games:</strong> {{ user.videojuegosFavoritos | join(', ') }}</p>
                     <p><strong>Preferred Genres:</strong> {{ user.generosPreferidos | join(', ') }}</p>
                     <p><strong>Gaming Platforms:</strong> {{ user.plataformasJuego | join(', ') }}</p>
+                    <p><strong>Shared Interests:</strong> {{ user.shared_interests }}</p>
                 </div>
             {% endfor %}
         </div>

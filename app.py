@@ -70,6 +70,41 @@ def logout():
     # Redirigir a la página principal
     return redirect(url_for('home'))
 
+#Encontrar la cantidad de juegos, generos y plataformas compartidas de los usuarios
+def find_common_interests(user1, user2):
+    shared_games = set(user1['videojuegosFavoritos']) & set(user2['videojuegosFavoritos'])
+    shared_genres = set(user1['generosPreferidos']) & set(user2['generosPreferidos'])
+    shared_platforms = set(user1['plataformasJuego']) & set(user2['plataformasJuego'])
+    total_shared = len(shared_games) + len(shared_genres) + len(shared_platforms)
+    return total_shared
+
+#Retorna los 5 usuarios con los que comparte mas intereses
+def get_recommended_users(current_user):
+    recommendations = []
+    for user in users:
+        if user['id'] != current_user['id']:
+            shared_interests = find_common_interests(current_user, user)
+            if shared_interests > 0:
+                user['shared_interests'] = shared_interests
+                recommendations.append(user)
+    recommendations.sort(key=lambda x: x['shared_interests'], reverse=True)
+    return recommendations[:5]
+
+@app.route('/search', methods=['GET', 'POST'])
+def search_users():
+    search_results = []
+    recommended_users = []
+
+    if request.method == 'POST':
+        search_username = request.form['search-username'].strip()
+        search_results = [user for user in users if search_username.lower() in user['nombreUsuario'].lower()]
+
+        if search_results: #Busca los usuarios recomendados para el primer usuario encontrado
+            current_user = search_results[0]
+            recommended_users = get_recommended_users(current_user)
+    
+    return render_template('search_users.html', search_results=search_results, recommended_users=recommended_users)
+
 if __name__ == '__main__':
     # Ejecutar la aplicación en modo de depuración
     app.run(debug=True)
