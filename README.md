@@ -109,29 +109,39 @@ Supongamos que tenemos un pequeño grupo de usuarios y estos deban encontrar otr
 ## Desarrollo de intefaces graficas.
 En esta parte hemos desarrollado e implementado algunas intefaces simples para la app como metodo de pruebas. las cuales fueron implementadas con un Login usando su nombre y el ID de las personas al momento de loguearse para su ingreso. Y mostrar que personas tienen una relacion con ellas al momento de entrar al dashboard.
 1.- home
-  ![Imagen de home](Interfaces_img/home.png)
+
+  ![Imagen de home](Intefaces_img/homePage.png)
 
 2.-loguin
+
   ![Imagen del logueo](Intefaces_img\login.png)
 
 3.-Dashboard
+
   ![Dashboard de ingreso](Intefaces_img\dashboard.jpg)
 
 4.-Recomendaciones
+
   ![Recomendaciones Mostradas](Intefaces_img\recomendaciones.png)
 
 5.-Criterio de busqueda
+
   ![Criterios de busquedas](Intefaces_img\criterio_de_busqueda.jpg)
 
 6.-Busqueda Avanzada
+
   ![Resultados de Busqueda avanzada](Intefaces_img\busquedas_avanzadas.jpg)
 
 7.-Agregar Nuevo Usuario
 Tambien hemos trabajo en esta nueva funcion para nuestra aplicacion que esta a punto de finalizar su desarrollo he implementacion.
-  ![En esta futura interface se podran agregar mas datos a los usuarios para al json](Intefaces_img\Agregar Usuario.jpg)
+
+  ![En esta futura interface se podran agregar mas datos a los usuarios para al json](Intefaces_img\Agregar_Usuario.jpg)
+
 ## Conclusión
 La propuesta de implementar un sistema de recomendaciones de amistad basado en intereses comunes en videojuegos dentro de una red social es una solución prometedora para abordar la dificultad que enfrentan los jugadores al encontrar compañeros para jugar. Al adaptar el algoritmo BFS, se puede explorar de manera eficiente la red social y sugerir nuevas conexiones basadas en afinidades en juegos. Esta solución no solo facilita la búsqueda de amigos con intereses similares, sino que también puede enriquecer la experiencia social de los usuarios al conectarlos con personas con quienes comparten pasiones específicas. Además, la validación de resultados mediante un ejemplo práctico demuestra la viabilidad y eficacia potencial de este enfoque. En resumen, la implementación de este sistema podría mejorar significativamente la interacción y la satisfacción de los usuarios en la red social, fortaleciendo así la comunidad de jugadores en línea.
 ## Referencias Bibliográficas:
 
 - Infobae. (2020, 29 enero). El público de gamers es cada vez más diverso: ¿por qué los videojuegos no? Infobae. https://www.infobae.com/america/tecno/2020/01/29/el-publico-de-gamers-es-cada-vez-mas-diverso-por-que-los-videojuegos-no/
 - Canning, J., Broder, A., & Lafore, R. (s. f.). Data Structures & Algorithms in Python. O’Reilly Online Learning. https://learning.oreilly.com/library/view/data-structures/9780134855912/
+
+[Intefaces_img/home.png]: Interfaces_img/home.png
