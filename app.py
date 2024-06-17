@@ -1,12 +1,16 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash
+import json
+from datetime import timedelta
 
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
 # Establecer una clave secreta para la sesión
 app.secret_key = 'supersecretkey'
+# Configurar la duración de la sesión
+app.permanent_session_lifetime = timedelta(minutes=1)
 
-# Base de datos ficticia de usuarios
-users = {'testuser': 'password123'}
+with open('dataset.json', 'r') as f:
+    usersdb = json.load(f)
 
 @app.route('/')
 def home():
@@ -27,13 +31,16 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        # Verificar si el nombre de usuario y la contraseña coinciden
-        if username in users and users[username] == password:
-            # Almacenar el nombre de usuario en la sesión
+        # Verificar si el nombre de usuario y la contraseña coinciden en usersdb
+        user = next((user for user in usersdb if user['nombreUsuario'] == username and user['id'] == password), None)
+        
+        if user:
+            # Establecer la sesión como permanente y almacenar el nombre de usuario
+            session.permanent = True
             session['username'] = username
             # Mostrar un mensaje flash de éxito
             flash('Login successful!', 'success')
-            # Redirigir al tablero
+            # Redirigir al dashboard
             return redirect(url_for('dashboard'))
         else:
             # Mostrar un mensaje flash de error si las credenciales no son correctas
@@ -70,7 +77,7 @@ def logout():
     # Redirigir a la página principal
     return redirect(url_for('home'))
 
-#Encontrar la cantidad de juegos, generos y plataformas compartidas de los usuarios
+# Encontrar la cantidad de juegos, géneros y plataformas compartidas de los usuarios
 def find_common_interests(user1, user2):
     shared_games = set(user1['videojuegosFavoritos']) & set(user2['videojuegosFavoritos'])
     shared_genres = set(user1['generosPreferidos']) & set(user2['generosPreferidos'])
@@ -78,10 +85,10 @@ def find_common_interests(user1, user2):
     total_shared = len(shared_games) + len(shared_genres) + len(shared_platforms)
     return total_shared
 
-#Retorna los 5 usuarios con los que comparte mas intereses
+# Retorna los 5 usuarios con los que comparte más intereses
 def get_recommended_users(current_user):
     recommendations = []
-    for user in users:
+    for user in usersdb:
         if user['id'] != current_user['id']:
             shared_interests = find_common_interests(current_user, user)
             if shared_interests > 0:
@@ -94,16 +101,18 @@ def get_recommended_users(current_user):
 def search_users():
     search_results = []
     recommended_users = []
+    logged_in_user = None
 
     if request.method == 'POST':
         search_username = request.form['search-username'].strip()
-        search_results = [user for user in users if search_username.lower() in user['nombreUsuario'].lower()]
+        search_results = [user for user in usersdb if search_username.lower() in user['nombreUsuario'].lower()]
 
-        if search_results: #Busca los usuarios recomendados para el primer usuario encontrado
-            current_user = search_results[0]
-            recommended_users = get_recommended_users(current_user)
-    
-    return render_template('search_users.html', search_results=search_results, recommended_users=recommended_users)
+    if 'username' in session:
+        logged_in_user = next((user for user in usersdb if user['nombreUsuario'] == session['username']), None)
+        if logged_in_user:
+            recommended_users = get_recommended_users(logged_in_user)
+
+    return render_template('search_users.html', search_results=search_results, recommended_users=recommended_users, logged_in_user=logged_in_user)
 
 if __name__ == '__main__':
     # Ejecutar la aplicación en modo de depuración

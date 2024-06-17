@@ -15,17 +15,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 h1 {
     color: #333;
-    text-align: center;
-}
-
-h2 {
-    text-align: center;
 }
 
 a {
@@ -70,23 +63,4 @@ button {
 
 button:hover {
     background-color: #0056b3;
-}
-
-.user-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.user-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    width: calc(50% - 20px);
-    box-sizing: border-box;
-}
-
-.user-card h3 {
-    margin-top: 0;
 }
