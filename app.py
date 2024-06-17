@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 import json
 from datetime import timedelta
+
 
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
@@ -68,6 +69,43 @@ def logout():
     # Redirigir a la página principal
     return redirect(url_for('home'))
 
+
+
+@app.route('/add_data', methods=['GET', 'POST'])
+def add_data():
+    """
+    Ruta para agregar datos.
+    Maneja tanto las solicitudes GET como POST.
+    """
+    if request.method == 'POST':
+        # Obtener los datos del formulario y convertirlos a un diccionario normal
+        data = request.form.to_dict()
+
+        # Convertir las cadenas de texto en listas
+        data['videojuegosFavoritos'] = data['videojuegosFavoritos'].split(',')
+        data['generosPreferidos'] = data['generosPreferidos'].split(',')
+        data['plataformasJuego'] = data['plataformasJuego'].split(',')
+
+        # Leer el dataset actual
+        with open('dataset.json', 'r') as file:
+            dataset = json.load(file)
+
+        # Agregar los nuevos datos al dataset
+        dataset.append(data)
+
+        # Guardar el dataset actualizado
+        with open('dataset.json', 'w') as file:
+            json.dump(dataset, file)
+
+        # Mostrar un mensaje flash de éxito
+        flash('Data added successfully!', 'success')
+
+        # Redirigir a la página principal
+        return redirect(url_for('home'))
+
+    # Renderizar la plantilla 'add_data.html' para las solicitudes GET
+    return render_template('add_data.html')
+
 # Encontrar la cantidad de juegos, géneros y plataformas compartidas de los usuarios
 def find_common_interests(user1, user2):
     shared_games = set(user1['videojuegosFavoritos']) & set(user2['videojuegosFavoritos'])
@@ -104,6 +142,7 @@ def search_users():
             recommended_users = get_recommended_users(logged_in_user)
 
     return render_template('search_users.html', search_results=search_results, recommended_users=recommended_users, logged_in_user=logged_in_user)
+
 
 if __name__ == '__main__':
     # Ejecutar la aplicación en modo de depuración
