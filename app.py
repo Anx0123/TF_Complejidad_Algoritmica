@@ -14,18 +14,12 @@ with open('dataset.json', 'r') as f:
 
 @app.route('/')
 def home():
-    """
-    Ruta para la página principal.
-    Renderiza la plantilla 'index.html'.
-    """
+   
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Ruta para el inicio de sesión.
-    Maneja tanto las solicitudes GET como POST.
-    """
+    
     if request.method == 'POST':
         # Obtener el nombre de usuario y la contraseña del formulario
         username = request.form['username']
@@ -51,10 +45,7 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-    """
-    Ruta para el tablero de usuario.
-    Requiere que el usuario esté autenticado.
-    """
+   
     if 'username' in session:
         # Renderizar la plantilla 'dashboard.html' con el nombre de usuario
         return render_template('dashboard.html', name=session['username'])
