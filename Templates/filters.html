@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='filter.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Buscar Usuarios</h1>
+        <form action="/Filters" method="post">
+            <label for="criterio">Criterio de Búsqueda:</label>
+            <select id="criterio" name="criterio">
+                <option value="videojuegos">Videojuegos Favoritos</option>
+                <option value="generos">Géneros Preferidos</option>
+                <option value="plataformas">Plataformas de Juego</option>
+            </select>
+
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" name="valor" required>
+
+            <button type="submit">Buscar</button>
+        </form>
+        
+        <h1>Resultados de Búsqueda</h1>
+        {% if resultados %}
+            <ul>
+                {% for usuario in resultados %}
+                    <li>
+                        <h2>{{ usuario.nombreUsuario }}</h2>
+                        <p><strong>Videojuegos Favoritos:</strong> {{ usuario.videojuegosFavoritos | join(', ') }}</p>
+                        <p><strong>Géneros Preferidos:</strong> {{ usuario.generosPreferidos | join(', ') }}</p>
+                        <p><strong>Plataformas de Juego:</strong> {{ usuario.plataformasJuego | join(', ') }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron resultados.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
