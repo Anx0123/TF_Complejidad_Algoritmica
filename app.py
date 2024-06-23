@@ -144,6 +144,22 @@ def search_users():
     return render_template('search_users.html', search_results=search_results, recommended_users=recommended_users, logged_in_user=logged_in_user)
 
 
+@app.route('/Filters', methods=['GET', 'POST'])
+def Filters():
+    resultados = []
+    if request.method == 'POST':
+        criterio = request.form['criterio']
+        valor = request.form['valor'].lower()
+        for usuario in usersdb:
+            if criterio == 'videojuegos' and valor in map(str.lower, usuario['videojuegosFavoritos']):
+                resultados.append(usuario)
+            elif criterio == 'generos' and valor in map(str.lower, usuario['generosPreferidos']):
+                resultados.append(usuario)
+            elif criterio == 'plataformas' and valor in map(str.lower, usuario['plataformasJuego']):
+                resultados.append(usuario)
+    return render_template('filters.html', resultados=resultados)
+
+
 if __name__ == '__main__':
     # Ejecutar la aplicación en modo de depuración
     app.run(debug=True)
