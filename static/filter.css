@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Users</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="search-username">Enter Username:</label>
+                <input type="text" id="search-username" name="search-username" required>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if search_results %}
+            <h2>Search Results</h2>
+            <div class="user-card">
+                <h3>{{ search_results[0].nombreUsuario }}</h3>
+                <p><strong>Favorite Games:</strong> {{ search_results[0].videojuegosFavoritos | join(', ') }}</p>
+                <p><strong>Preferred Genres:</strong> {{ search_results[0].generosPreferidos | join(', ') }}</p>
+                <p><strong>Gaming Platforms:</strong> {{ search_results[0].plataformasJuego | join(', ') }}</p>
+            </div>
+        {% endif %}
+
+        {% if logged_in_user %}
+            <h2>Recommended Users</h2>
+            <div class="user-list">
+                {% for user in recommended_users %}
+                    <div class="user-card">
+                        <h3>{{ user.nombreUsuario }}</h3>
+                        <p><strong>Favorite Games:</strong> {{ user.videojuegosFavoritos | join(', ') }}</p>
+                        <p><strong>Preferred Genres:</strong> {{ user.generosPreferidos | join(', ') }}</p>
+                        <p><strong>Gaming Platforms:</strong> {{ user.plataformasJuego | join(', ') }}</p>
+                        <p><strong>Shared Interests:</strong> {{ user.shared_interests }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2>Inicia sesión para ver usuarios recomendados</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
